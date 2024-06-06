@@ -88,44 +88,19 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Sắp xếp theo tác giả:");
-                    EBook[] bookListByAuthor = library.seeBookList();
-                    for (int i = 0; i < bookListByAuthor.length - 1; i++) {
-                        for (int j = i + 1; j < bookListByAuthor.length; j++) {
-                            if (bookListByAuthor[i].getAuthor().compareTo(bookListByAuthor[j].getAuthor()) > 0) {
-                                EBook temp = bookListByAuthor[i];
-                                bookListByAuthor[i] = bookListByAuthor[j];
-                                bookListByAuthor[j] = temp;
-                            }
-                        }
-                    }
-                    for (EBook book : bookListByAuthor) {
-                        System.out.println(book.toString());
-                    }
+                    library.sortByAuthor("Tác giả");
                     break;
 
                 case 7:
                     System.out.println("Sắp xếp theo năm xuất bản:");
-                    EBook[] bookListByYear = library.seeBookList();
-                    for (int i = 0; i < bookListByYear.length - 1; i++) {
-                        for (int j = i + 1; j < bookListByYear.length; j++) {
-                            if (bookListByYear[i].getPublishingYear().compareTo(bookListByYear[j].getPublishingYear()) > 0) {
-                                EBook temp = bookListByYear[i];
-                                bookListByYear[i] = bookListByYear[j];
-                                bookListByYear[j] = temp;
-                            }
-                        }
-                    }
-                    for (EBook book : bookListByYear) {
-                        System.out.println(book.toString());
-                    }
+                    library.sortByPublishingYear("Năm sản xuất");
                     break;
-
                 case 8:
                     System.out.print("Nhập mã sách cần tìm: ");
                     String searchCode = scanner.nextLine();
                     EBook foundBookByCode = library.findEBookByCode(searchCode);
                     if (foundBookByCode != null) {
-                        System.out.println("Sách được tìm thấy: " + foundBookByCode.toString());
+                        System.out.println("Sách được tìm thấy: " + foundBookByCode);
                     } else {
                         System.out.println("Không tìm thấy sách với mã code này.");
                     }
@@ -136,7 +111,7 @@ public class Main {
                     String searchTitle = scanner.nextLine();
                     EBook foundBookByTitle = library.findEBookByTitle(searchTitle);
                     if (foundBookByTitle != null) {
-                        System.out.println("Sách được tìm thấy: " + foundBookByTitle.toString());
+                        System.out.println("Sách được tìm thấy: " + foundBookByTitle);
                     } else {
                         System.out.println("Không tìm thấy sách với tiêu đề này.");
                     }
